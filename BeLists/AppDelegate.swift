@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Material
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -42,5 +44,54 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    //////////////////////////////////// Drawer ////////////////////////////
+
+    
+        lazy var rootViewController: RootViewController = {
+            return UIStoryboard.viewController(identifier: "RootViewController") as! RootViewController
+        }()
+        
+        lazy var leftViewController: LeftViewController = {
+            return UIStoryboard.viewController(identifier: "LeftViewController") as! LeftViewController
+        }()
+        
+        lazy var rightViewController: RightViewController = {
+            return UIStoryboard.viewController(identifier: "RightViewController") as! RightViewController
+        }()
+        
+        func applicationDidFinishLaunching(_ application: UIApplication) {
+            window = UIWindow(frame: Screen.bounds)
+            window!.rootViewController = AppNavigationDrawerController(rootViewController: rootViewController,
+                                                                       leftViewController: leftViewController,
+                                                                       rightViewController: rightViewController)
+            window!.makeKeyAndVisible()
+        }
+    
+    //////////////////////////////////// Drawer ////////////////////////////
+
+
 }
 
+
+
+
+//////////////////////////////////// Drawer ////////////////////////////
+
+extension UIStoryboard {
+    class func viewController(identifier: String) -> UIViewController {
+        return UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: identifier)
+    }
+}
+
+//////////////////////////////////// Drawer ////////////////////////////
